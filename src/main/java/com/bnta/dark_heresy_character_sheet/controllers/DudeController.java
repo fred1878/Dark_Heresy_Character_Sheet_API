@@ -25,14 +25,21 @@ public class DudeController {
 
     //SHOW
     @GetMapping(value = "/{id}") //localhost:8080/dudes/1
-    public ResponseEntity<Optional<Dude>> getPet(@PathVariable Long id){
+    public ResponseEntity<Optional<Dude>> getDude(@PathVariable Long id){
         return new ResponseEntity<>(dudeRepository.findById(id), HttpStatus.OK);
     }
 
     //POST
     @PostMapping //POST localhost:8080/dude
-    public ResponseEntity<Dude> createPet(@RequestBody Dude newDude){
+    public ResponseEntity<Dude> createDude(@RequestBody Dude newDude){
         dudeRepository.save(newDude);
         return new ResponseEntity<>(newDude, HttpStatus.CREATED);
+    }
+
+    //DELETE
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Dude> deleteDude(@PathVariable Long id){
+        dudeRepository.deleteById(id);
+        return new ResponseEntity(id,HttpStatus.OK);
     }
 }

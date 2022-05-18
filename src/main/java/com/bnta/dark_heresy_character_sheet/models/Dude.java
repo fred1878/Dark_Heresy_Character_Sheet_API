@@ -17,7 +17,7 @@ public class Dude {
     @Column
     private String name;
     @Column
-    @OneToMany(mappedBy = "dude")
+    @OneToMany(mappedBy = "dude", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"dude"})
     private List<Weapon> weapons;
 
