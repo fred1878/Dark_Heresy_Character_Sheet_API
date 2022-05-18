@@ -21,7 +21,12 @@ public class WeaponController {
 
     //INDEX
     @GetMapping //localhost:8080/weapons
-    public ResponseEntity<List<Weapon>> getAllWeapons(){
+    public ResponseEntity<List<Weapon>> getAllWeaponsAndFilters(
+            @RequestParam(name = "weaponClass",required = false) String weaponClass,
+            @RequestParam(name = "cost",required = false) Integer cost){
+        if(weaponClass != null && cost != null){
+            return new ResponseEntity(weaponRepository.findWeaponByWeaponClassLike(weaponClass).addAll(weaponRepository.findWeaponByCostGreaterThanEqual(cost)),HttpStatus.OK);
+        }
         return new ResponseEntity<>(weaponRepository.findAll(), HttpStatus.OK);
     }
 
