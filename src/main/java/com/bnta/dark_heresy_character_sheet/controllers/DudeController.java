@@ -30,14 +30,14 @@ public class DudeController {
     }
 
     //POST
-    @PostMapping //POST localhost:8080/dude
+    @PostMapping // localhost:8080/dudes
     public ResponseEntity<Dude> createDude(@RequestBody Dude newDude){
         dudeRepository.save(newDude);
         return new ResponseEntity<>(newDude, HttpStatus.CREATED);
     }
 
     //DELETE
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/{id}") //localhost:8080/dudes/1
     public ResponseEntity<Dude> deleteDude(@PathVariable Long id){
         dudeRepository.deleteById(id);
         return new ResponseEntity(id,HttpStatus.OK);
