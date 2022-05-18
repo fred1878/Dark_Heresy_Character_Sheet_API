@@ -22,13 +22,13 @@ public class Weapon {
     @Column
     private String damage;
     @Column
-    private String pen;
+    private int pen;
     @Column
-    private String clip;
+    private int clip;
     @Column
     private String rld;
     @Column
-    private String cost;
+    private int cost;
     @Column
     private List<WeaponAttributes> weaponAttributes;
     @ManyToOne
@@ -37,8 +37,8 @@ public class Weapon {
 
     public Weapon() {}
 
-    public Weapon(String name, String weaponClass, int range, String rof, String damage, String pen, String clip, String rld,
-                  String cost, List<WeaponAttributes> weaponAttributes, Dude dude) {
+    public Weapon(String name, String weaponClass, int range, String rof, String damage, int pen, int clip, String rld,
+                  int cost, List<WeaponAttributes> weaponAttributes, Dude dude) {
         this.name = name;
         this.weaponClass = weaponClass;
         this.range = range;
@@ -96,19 +96,19 @@ public class Weapon {
         this.damage = damage;
     }
 
-    public String getPen() {
+    public int getPen() {
         return pen;
     }
 
-    public void setPen(String pen) {
+    public void setPen(int pen) {
         this.pen = pen;
     }
 
-    public String getClip() {
+    public int getClip() {
         return clip;
     }
 
-    public void setClip(String clip) {
+    public void setClip(int clip) {
         this.clip = clip;
     }
 
@@ -120,11 +120,11 @@ public class Weapon {
         this.rld = rld;
     }
 
-    public String getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 

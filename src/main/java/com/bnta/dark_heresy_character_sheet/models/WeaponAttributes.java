@@ -12,6 +12,7 @@ public enum WeaponAttributes {
     POWER_FIELD,
     PRIMITIVE,
     RECHARGE,
+    RELIABLE,
     SCATTER,
     SHOCKING,
     SMOKE,
