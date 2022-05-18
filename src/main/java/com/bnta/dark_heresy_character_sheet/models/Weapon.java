@@ -32,13 +32,13 @@ public class Weapon {
     @Column
     private List<WeaponAttributes> weaponAttributes;
     @ManyToOne
-    @JoinColumn(name = "playercharacter_id",nullable = false)
-    private PlayerCharacter playerCharacter;
+    @JoinColumn(name = "dude_id",nullable = false)
+    private Dude dude;
 
     public Weapon() {}
 
     public Weapon(String name, String weaponClass, int range, String rof, String damage, String pen, String clip, String rld,
-                  String cost, List<WeaponAttributes> weaponAttributes, PlayerCharacter playerCharacter) {
+                  String cost, List<WeaponAttributes> weaponAttributes, Dude dude) {
         this.name = name;
         this.weaponClass = weaponClass;
         this.range = range;
@@ -49,7 +49,7 @@ public class Weapon {
         this.rld = rld;
         this.cost = cost;
         this.weaponAttributes = weaponAttributes;
-        this.playerCharacter = playerCharacter;
+        this.dude = dude;
     }
 
     public Long getId() {
@@ -136,11 +136,11 @@ public class Weapon {
         this.weaponAttributes = weaponAttributes;
     }
 
-    public PlayerCharacter getPlayerCharacter() {
-        return playerCharacter;
+    public Dude getDude() {
+        return dude;
     }
 
-    public void setPlayerCharacter(PlayerCharacter playerCharacter) {
-        this.playerCharacter = playerCharacter;
+    public void setPlayerCharacter(Dude dude) {
+        this.dude = dude;
     }
 }

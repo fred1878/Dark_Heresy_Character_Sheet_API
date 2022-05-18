@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "playercharacters")
-public class PlayerCharacter {
+@Table(name = "dudes")
+public class Dude {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +17,13 @@ public class PlayerCharacter {
     @Column
     private String name;
     @Column
-    @OneToMany(mappedBy = "playerCharacter")
-    @JsonIgnoreProperties({"playerCharacter"})
+    @OneToMany(mappedBy = "dude")
+    @JsonIgnoreProperties({"dude"})
     private List<Weapon> weapons;
 
-    public PlayerCharacter() {}
+    public Dude() {}
 
-    public PlayerCharacter(String name) {
+    public Dude(String name) {
         this.name = name;
         this.weapons = new ArrayList<>();
     }
