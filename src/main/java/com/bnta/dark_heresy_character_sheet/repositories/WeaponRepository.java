@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface WeaponRepository extends JpaRepository<Weapon, Long> {
 
-    List<Weapon> findWeaponByWeaponClassLike(String weaponClass);
+    List<Weapon> findWeaponByWeaponClass(String weaponClass);
     List<Weapon> findWeaponByCostGreaterThanEqual(Integer cost);
 }
