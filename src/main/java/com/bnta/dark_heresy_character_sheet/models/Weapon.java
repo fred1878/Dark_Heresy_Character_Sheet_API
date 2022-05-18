@@ -30,7 +30,7 @@ public class Weapon {
     @Column
     private int cost;
     @Column
-    private List<WeaponAttributes> weaponAttributes;
+    private String weaponAttributes;
     @ManyToOne
     @JoinColumn(name = "dude_id",nullable = false)
     private Dude dude;
@@ -38,7 +38,7 @@ public class Weapon {
     public Weapon() {}
 
     public Weapon(String name, String weaponClass, int range, String rof, String damage, int pen, int clip, String rld,
-                  int cost, List<WeaponAttributes> weaponAttributes, Dude dude) {
+                  int cost, String weaponAttributes, Dude dude) {
         this.name = name;
         this.weaponClass = weaponClass;
         this.range = range;
@@ -128,11 +128,11 @@ public class Weapon {
         this.cost = cost;
     }
 
-    public List<WeaponAttributes> getWeaponAttributes() {
+    public String getWeaponAttributes() {
         return weaponAttributes;
     }
 
-    public void setWeaponAttributes(List<WeaponAttributes> weaponAttributes) {
+    public void setWeaponAttributes(String weaponAttributes) {
         this.weaponAttributes = weaponAttributes;
     }
 
