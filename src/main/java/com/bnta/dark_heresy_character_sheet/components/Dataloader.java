@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Component
 public class Dataloader implements ApplicationRunner {
@@ -33,6 +34,5 @@ public class Dataloader implements ApplicationRunner {
         Weapon boltgun = new Weapon("Boltgun","Basic",90,"S/2/-","1d10+5 X",4,24,"Full",500,"",dude2);
         Weapon chainsword = new Weapon("Chainsword","Melee",1,"","1d10+2 R",2,0,"",275,"Tearing",dude3);
         weaponRepository.saveAll(Arrays.asList(lasgun,boltgun,chainsword));
-
     }
 }
