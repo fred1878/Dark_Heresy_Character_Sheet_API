@@ -30,8 +30,8 @@ public class WeaponController {
         if(weaponClass != null && cost != null){
             List<Weapon> list1 = weaponRepository.findWeaponByWeaponClass(weaponClass);
             List<Weapon> list2 = weaponRepository.findWeaponByCostGreaterThanEqual(cost);
-            List<Weapon> out = new ArrayList<>(Stream.of(list1,list2).flatMap(List::stream)
-                    .collect(Collectors.toMap(Weapon::getId, d -> d, (Weapon x, Weapon y) -> x == null ? y : x)).values());
+            List<Weapon> out = new ArrayList<>(Stream.of(list1,list2).flatMap(List::stream)//create a stream of each item in each list
+                    .collect(Collectors.toMap(Weapon::getId, d -> d, (Weapon x, Weapon y) -> x == null ? y : x)).values());//compare each item by id and remove duplicates
             return new ResponseEntity<>(out, HttpStatus.OK);
             //return new ResponseEntity(weaponRepository.findWeaponByWeaponClass(weaponClass).addAll(weaponRepository.findWeaponByCostGreaterThanEqual(cost)),HttpStatus.OK);
         }
