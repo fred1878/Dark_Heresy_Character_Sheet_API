@@ -21,11 +21,21 @@ public class Dude {
     @JsonIgnoreProperties({"dude"})
     private List<Weapon> weapons;
 
+    @ManyToMany
+    @JoinTable(
+            name = "dudes_talents",
+            joinColumns = {@JoinColumn(name = "dude_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "talent_id")}
+    )
+    @JsonIgnoreProperties({"dude"})
+    private List<Talent> talents;
+
     public Dude() {}
 
-    public Dude(String name) {
+    public Dude(String name,List<Talent> talents) {
         this.name = name;
         this.weapons = new ArrayList<>();
+        this.talents = talents;
     }
 
     public Long getId() {
@@ -46,5 +56,13 @@ public class Dude {
 
     public void setWeapons(List<Weapon> weapons) {
         this.weapons = weapons;
+    }
+
+    public List<Talent> getTalents() {
+        return talents;
+    }
+
+    public void setTalents(List<Talent> talents) {
+        this.talents = talents;
     }
 }
