@@ -1,5 +1,7 @@
 package com.bnta.dark_heresy_character_sheet.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class Weapon {
     private String weaponAttributes;
     @ManyToOne
     @JoinColumn(name = "dude_id",nullable = false)
+    @JsonIgnoreProperties({"talents","weapons"})
     private Dude dude;
 
     public Weapon() {}

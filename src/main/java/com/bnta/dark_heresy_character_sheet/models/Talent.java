@@ -19,7 +19,7 @@ public class Talent {
     @Column
     private String desc;
     @ManyToMany(mappedBy = "talents")
-    @JsonIgnoreProperties({"talents"})
+    @JsonIgnoreProperties({"talents","weapons"})
     private List<Dude> dudes;
 
 
