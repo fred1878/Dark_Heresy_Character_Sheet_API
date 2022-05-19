@@ -9,8 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("weapons")
@@ -25,7 +28,12 @@ public class WeaponController {
             @RequestParam(name = "weaponClass",required = false) String weaponClass,
             @RequestParam(name = "cost",required = false) Integer cost){
         if(weaponClass != null && cost != null){
-            return new ResponseEntity(weaponRepository.findWeaponByWeaponClass(weaponClass).addAll(weaponRepository.findWeaponByCostGreaterThanEqual(cost)),HttpStatus.OK);
+            List<Weapon> list1 = weaponRepository.findWeaponByWeaponClass(weaponClass);
+            List<Weapon> list2 = weaponRepository.findWeaponByCostGreaterThanEqual(cost);
+            List<Weapon> out = new ArrayList<>(Stream.of(list1,list2).flatMap(List::stream)
+                    .collect(Collectors.toMap(Weapon::getId, d -> d, (Weapon x, Weapon y) -> x == null ? y : x)).values());
+            return new ResponseEntity<>(out, HttpStatus.OK);
+            //return new ResponseEntity(weaponRepository.findWeaponByWeaponClass(weaponClass).addAll(weaponRepository.findWeaponByCostGreaterThanEqual(cost)),HttpStatus.OK);
         }
         if(weaponClass == null && cost != null){
             return new ResponseEntity(weaponRepository.findWeaponByCostGreaterThanEqual(cost),HttpStatus.OK);

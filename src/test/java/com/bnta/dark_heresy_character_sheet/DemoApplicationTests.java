@@ -28,7 +28,7 @@ class DemoApplicationTests {
 	}
 
 	@Test
-	public void canfindWeaponByCostGreaterThanEqual(){
+	public void canFindWeaponByCostGreaterThanEqual(){
 		assertThat(weaponRepository.findWeaponByCostGreaterThanEqual(200).size()).isEqualTo(2);
 	}
 
